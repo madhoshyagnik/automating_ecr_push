@@ -1,12 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# GitHub recommends pinning actions to a commit SHA.
-# To get a newer version, you will need to update the SHA.
-# You can also reference a tag or branch, but the action may change without warning.
-
 name: Deploy to Amazon ECS
 
 on:
@@ -15,14 +6,12 @@ on:
       - main
 
 env:
-  AWS_REGION: ap-south-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: automating_ecr           # set this to your Amazon ECR repository name
-  ECS_SERVICE: my-service                 # set this to your Amazon ECS service name
-  ECS_CLUSTER: my-cluster                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: ecs_task_def.JSON # set this to the path to your Amazon ECS task definition
-                                               # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: my-container           # set this to the name of the container in the
-                                               # containerDefinitions section of your task definition
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: automating_ecr
+  ECS_SERVICE: my-service
+  ECS_CLUSTER: my-cluster
+  ECS_TASK_DEFINITION: ecs_task_def.JSON
+  CONTAINER_NAME: my-container
 
 jobs:
   deploy:
@@ -51,12 +40,11 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          # Build a docker container and
-          # push it to ECR so that it can
-          # be deployed to ECS.
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+          # Set the output variable for later use
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
