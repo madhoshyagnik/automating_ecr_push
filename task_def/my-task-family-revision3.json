@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:949589909135:task-definition/my-task-family:5",
+    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:949589909135:task-definition/my-task-family:9",
     "containerDefinitions": [
         {
             "name": "my-container",
@@ -21,7 +21,7 @@
     ],
     "family": "my-task-family",
     "networkMode": "awsvpc",
-    "revision": 5,
+    "revision": 9,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -39,7 +39,12 @@
     "compatibilities": [
         "EC2"
     ],
-    "registeredAt": "2024-01-04T13:28:01.020Z",
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "registeredAt": "2024-01-04T16:35:34.248Z",
     "registeredBy": "arn:aws:iam::949589909135:root",
     "tags": []
 }
