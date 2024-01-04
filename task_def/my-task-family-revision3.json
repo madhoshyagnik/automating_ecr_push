@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:949589909135:task-definition/my-task-family:3",
+    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:949589909135:task-definition/my-task-family:5",
     "containerDefinitions": [
         {
             "name": "my-container",
@@ -8,8 +8,8 @@
             "memory": 512,
             "portMappings": [
                 {
-                    "containerPort": 80,
-                    "hostPort": 80,
+                    "containerPort": 3000,
+                    "hostPort": 3000,
                     "protocol": "tcp"
                 }
             ],
@@ -21,7 +21,7 @@
     ],
     "family": "my-task-family",
     "networkMode": "awsvpc",
-    "revision": 3,
+    "revision": 5,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -39,7 +39,7 @@
     "compatibilities": [
         "EC2"
     ],
-    "registeredAt": "2024-01-04T08:57:57.981Z",
+    "registeredAt": "2024-01-04T13:28:01.020Z",
     "registeredBy": "arn:aws:iam::949589909135:root",
     "tags": []
 }
