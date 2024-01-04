@@ -2,7 +2,7 @@
     "family": "",
     "taskRoleArn": "",
     "executionRoleArn": "",
-    "networkMode": "host",
+    "networkMode": "none",
     "containerDefinitions": [
         {
             "name": "",
@@ -20,7 +20,7 @@
                 {
                     "containerPort": 0,
                     "hostPort": 0,
-                    "protocol": "udp"
+                    "protocol": "tcp"
                 }
             ],
             "essential": true,
@@ -96,7 +96,7 @@
             "dependsOn": [
                 {
                     "containerName": "",
-                    "condition": "START"
+                    "condition": "HEALTHY"
                 }
             ],
             "startTimeout": 0,
@@ -129,13 +129,13 @@
             },
             "ulimits": [
                 {
-                    "name": "sigpending",
+                    "name": "locks",
                     "softLimit": 0,
                     "hardLimit": 0
                 }
             ],
             "logConfiguration": {
-                "logDriver": "splunk",
+                "logDriver": "json-file",
                 "options": {
                     "KeyName": ""
                 },
@@ -195,11 +195,11 @@
             "efsVolumeConfiguration": {
                 "fileSystemId": "",
                 "rootDirectory": "",
-                "transitEncryption": "ENABLED",
+                "transitEncryption": "DISABLED",
                 "transitEncryptionPort": 0,
                 "authorizationConfig": {
                     "accessPointId": "",
-                    "iam": "ENABLED"
+                    "iam": "DISABLED"
                 }
             },
             "fsxWindowsFileServerVolumeConfiguration": {
@@ -229,7 +229,7 @@
             "value": ""
         }
     ],
-    "pidMode": "host",
+    "pidMode": "task",
     "ipcMode": "host",
     "proxyConfiguration": {
         "type": "APPMESH",
@@ -251,7 +251,7 @@
         "sizeInGiB": 0
     },
     "runtimePlatform": {
-        "cpuArchitecture": "ARM64",
-        "operatingSystemFamily": "WINDOWS_SERVER_2019_CORE"
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "WINDOWS_SERVER_2004_CORE"
     }
 }
