@@ -16,7 +16,7 @@ on:
 
 env:
   AWS_REGION: ap-south-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: automate_ecr           # set this to your Amazon ECR repository name
+  ECR_REPOSITORY: automating_ecr           # set this to your Amazon ECR repository name
   ECS_SERVICE: my-service                 # set this to your Amazon ECS service name
   ECS_CLUSTER: my-cluster                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: https://github.com/MadhoshYagnik/automating_ecr_push/blob/main/ecs_task_def.JSON # set this to the path to your Amazon ECS task definition
