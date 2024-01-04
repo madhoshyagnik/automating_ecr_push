@@ -3,7 +3,7 @@ name: cd
 on: [push, pull_request]
 
 env: 
-  ECR_REPOSITORY: "github-actions-ecr"
+  ECR_REPOSITORY: "automating_ecr"
   AWS_REGION: "ap-south-1"
 
 jobs:
